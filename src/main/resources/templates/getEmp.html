@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>社員基本情報詳細</title>
+</head>
+<body  style="background-image:url(image/background1.jpeg);background-size:cover;">
+<div style="margin-left:40%">
+<img src="/image/logo1.jpg" style="heigth:30px; width: 30px;display:inline;">
+   <h1  style="color:#993333;display:inline;" th:text="#{title}" align="center"></h1>
+   </div>
+   <br>
+   <hr>
+   <h2 align="center" style="color:#008BBB" th:text=#{empDetail}></h2>
+     
+          <form action="/login" style="margin-left: 65%;">
+					<input type="submit" th:value="#{logout}" style="color:white; background-color:#F4A460;
+					border-style:none;"/>
+		  </form>
+    		
+     <div  align="center"> 
+  
+   <table style="color:#008BBB">
+   <tr>
+      <td></td>
+   </tr>
+   <tr>
+      <td th:text="#{empCd}"></td>
+      <td><input type="text" th:value="${empdata.empCd}"  readonly /></td>
+   </tr>
+   <tr>
+      <td th:text="#{empName}"></td>
+      <td><input type="text" th:value="${empdata.name}"  readonly></td>
+   </tr>
+   <tr>
+      <td th:text="#{gender}"></td>
+      <td><input type="text" th:value="${empdata.genderName}" readonly></td>
+   </tr>
+   <tr>
+      <td th:text="#{birthday}"></td>
+      <td><input type="text" th:value="${empdata.birthday}"  readonly></td>
+   </tr>
+   <tr>
+      <td th:text="#{nationality}"></td>
+      <td><input type="text" th:value="${empdata.nationalityName}"  readonly></td>
+   </tr>
+   </table>
+    </div>
+   <br>
+   <div align="center">
+   <form >
+       <input type="button" th:value="#{back}" onClick="window.location.href='/emplist'" 
+       style="color:white; background-color:#4169E1;border-style:none;"></input>
+  </form> 
+     </div>
+     <h5 align="center" style="color:grey">©码农吧 https://www.coderbar.com/</h5>
+ </body>
+</html>

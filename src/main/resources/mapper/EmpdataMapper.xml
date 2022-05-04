@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：与当前映射文件所对应的mapper接口 -->
+<mapper namespace="com.cjq.mapper.EmpdataMapper">
+
+<!-- select用来实行查询操作，Id属性定义的是对应接口当中的方法名（两者完全一致），parameterType属性定义的是方法的参数类型，
+  resultType属性：定义的是方法的返回值类型 -->
+  <!-- a社员信息变更 -->
+<update id="updateEmp" parameterType="com.cjq.bean.Empdata">
+     update empdata set name=#{name},birthday=#{birthday},nationalityCd=#{nationalityCd},
+     genderCd=#{genderCd} where empCd=#{empCd}
+     </update>
+     <!-- b员工信息删除 -->
+     <delete id="deleteEmp" parameterType="java.lang.String">
+     delete from empdata where empCd=#{empCd}
+     </delete>
+     <!-- c社员信息检索 -->
+     <select id="findEmp" parameterType="java.lang.String" resultType="com.cjq.bean.Empdata">
+
+       select * from empdata e left outer join nationality n on n.nationalityCd=e.nationalityCd 
+       left outer join gender g on g.genderCd=e.genderCd where concat(empCd,name,birthday,nationalityName,genderName) 
+       LIKE #{0}
+         
+     </select>
+     <!-- d社员详细信息取得 -->
+     <select id="getEmp" parameterType="java.lang.String" resultType="com.cjq.bean.Empdata">
+     SELECT e.empCd,e.name,e.birthday,n.nationalityCd,n.nationalityName,g.genderCd,g.genderName FROM empdata as e
+		LEFT JOIN nationality as n ON (e.nationalityCd=n.nationalityCd)
+		LEFT JOIN gender as g ON (e.genderCd=g.genderCd)
+		WHERE empCd=#{0}
+     </select>
+</mapper>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>登録画面</title>
+</head>
+<body style="background-image:url(image/background1.jpeg);background-size:cover;">
+<div style="margin-left:40%">
+<img src="/image/logo1.jpg" style="heigth:30px; width: 30px;display:inline;">
+   <h1  style="color:#993333;display:inline;" th:text="#{title}" align="center"></h1>
+   </div>
+   <br>
+   <hr>
+	<!--  th:object对表单数据的绑定，通常和th:field一起使用 -->
+		<form method="post" action="/auth" th:object="${form}">
+			<table style="color:#008BBB" align="center">
+			<!--　errorListから入力検証の エラーメッセージの繰り返し処理  -->
+				<tr th:inline="text" th:each="message : ${errorList}">
+				　<!--　エラーメッセージ の表示  -->
+					<td>[[${message.defaultMessage}]]</td>
+				</tr>
+				<tr>
+					<td><p th:text="#{userid}"></p></td>
+				</tr>
+				<tr>
+				<!--  -->
+					<td><input type="text" name="accountId" value="" size="40" 
+						th:field="*{accountId}" th:placeholder="#{login.userid.placeholder}" 
+						onkeydown="eraseInfo();">
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+				</tr>
+				<tr>
+					<td><p th:text="#{password}"></p></td>
+				</tr>
+				<tr>
+					<td><input type="password" name="password" value="" size="40" th:field="*{password}"
+						maxlength="6" onkeydown="eraseInfo();">
+					</td>
+			</table>
+			<div align="center">
+			<input type="submit" th:attr="value=#{login}" class="loginbtn" style="color:white; background-color:#4169E1;
+			border-style:none;"><br>
+			<div id="show" style="color: red">
+			    <!-- aエラーメッセージの表示 -->
+				<p th:text="${message}"></p>
+			</div>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：与当前映射文件所对应的mapper接口 -->
+<mapper namespace="com.cjq.mapper.EmpdataInsertMapper">
+
+<!-- select用来实行查询操作，Id属性定义的是对应接口当中的方法名（两者完全一致），parameterType属性定义的是方法的参数类型，
+  resultType属性：定义的是方法的返回值类型 -->
+<insert id="empdataInsert" parameterType="com.cjq.bean.Empdata">
+     insert into empdata value(#{empCd},#{name},#{birthday},#{nationalityCd},#{genderCd})
+     </insert>
+</mapper>

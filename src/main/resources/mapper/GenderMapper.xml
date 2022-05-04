@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cjq.mapper.GenderMapper">	
+	<select id="getGenderList"  resultType="com.cjq.bean.Gender">
+		SELECT * FROM gender
+	</select>
+</mapper>
